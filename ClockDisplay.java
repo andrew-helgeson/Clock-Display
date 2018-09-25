@@ -1,16 +1,14 @@
 
 /**
  * The ClockDisplay class implements a digital clock display for a
- * European-style 24 hour clock. The clock shows hours and minutes. The 
- * range of the clock is 00:00 (midnight) to 23:59 (one minute before 
- * midnight).
- * 
+ * 12 hour clock. The clock shows hours and minutes. Includes an AM and PM
+ * indicator
  * The clock display receives "ticks" (via the timeTick method) every minute
  * and reacts by incrementing the display. This is done in the usual clock
  * fashion: the hour increments when the minutes roll over to zero.
  * 
- * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ * @author Andrew Helgeson
+ * @version 2018.09.24
  */
 public class ClockDisplay
 {
