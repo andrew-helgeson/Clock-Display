@@ -1,31 +1,35 @@
 
 /**
  * The ClockDisplay class implements a digital clock display for a
- * 12 hour clock. The clock shows hours and minutes. Uses internal numbers
- * from 0-23, and displays 1-12.
- * 
+ * 12 hour clock. The clock shows hours and minutes. Includes an AM and PM
+ * indicator
  * The clock display receives "ticks" (via the timeTick method) every minute
  * and reacts by incrementing the display. This is done in the usual clock
  * fashion: the hour increments when the minutes roll over to zero.
  * 
- * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ * @author Andrew Helgeson
+ * @version 2018.10.01
  */
 public class ClockDisplay
 {
     private NumberDisplay hours;
     private NumberDisplay minutes;
-    private String displayString;    // simulates the actual display
+    private String twelveHourDisplayString;
+    private String updatedHours;
+    private String meridianIndicator;
+    private String displayString; // simulates the actual display
     
     /**
      * Constructor for ClockDisplay objects. This constructor 
-     * creates a new clock set at 00:00.
+     * creates a new clock set at 12:00 AM.
      */
     public ClockDisplay()
     {
         hours = new NumberDisplay(24);
         minutes = new NumberDisplay(60);
+        meridianIndicator = "AM";
         updateDisplay();
+        update12HourDisplay();
     }
 
     /**
@@ -51,6 +55,7 @@ public class ClockDisplay
             hours.increment();
         }
         updateDisplay();
+        update12HourDisplay();
     }
 
     /**
@@ -62,14 +67,70 @@ public class ClockDisplay
         hours.setValue(hour);
         minutes.setValue(minute);
         updateDisplay();
+        update12HourDisplay();
     }
 
-    /**
-     * Return the current time of this display in the format HH:MM.
-     */
+    
+    public String get12HourInternalDisplay()
+    {
+        return twelveHourDisplayString;
+    }
+    
     public String getTime()
     {
         return displayString;
+    }
+    
+    private void update12HourDisplay()
+    {
+        if (hours.getValue() == 0){
+            updatedHours = "12";
+        }
+        else if (hours.getValue() == 13){
+            updatedHours = "01";
+        }
+        else if (hours.getValue() == 14){
+            updatedHours = "02";
+        }
+        else if (hours.getValue() == 15){
+            updatedHours = "03";
+        }
+        else if (hours.getValue() == 16){
+            updatedHours = "04";
+        }
+        else if (hours.getValue() == 17){
+            updatedHours = "05";
+        }
+        else if (hours.getValue() == 18){
+            updatedHours = "06";
+        }
+        else if (hours.getValue() == 19){
+            updatedHours = "07";
+        }
+        else if (hours.getValue() == 20){
+            updatedHours = "08";
+        }
+        else if (hours.getValue() == 21){
+            updatedHours = "09";
+        }
+        else if (hours.getValue() == 22){
+            updatedHours = "10";
+        }
+        else if (hours.getValue() == 23){
+            updatedHours = "11";
+        }
+        else {
+            updatedHours = hours.getDisplayValue();
+        }
+        if (hours.getValue() < 12){
+            meridianIndicator = "AM";
+        }
+        else {
+            meridianIndicator = "PM";
+        }
+        
+        twelveHourDisplayString = updatedHours + ":" + minutes.getDisplayValue()
+        + " " + meridianIndicator;
     }
     
     /**
@@ -77,15 +138,6 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
-        if (hours.getDisplayValue() == "00")
-        {
-            hours.getDisplayValue() = "12";
-        }
-        else if (hours.getDisplayValue() == "13")
-        {
-            hours.getDisplayValue() = "1";
-        }
-        
         displayString = hours.getDisplayValue() + ":" + 
                         minutes.getDisplayValue();
     }
