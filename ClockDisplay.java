@@ -17,17 +17,22 @@ public class ClockDisplay
     private String twelveHourDisplayString;
     private String updatedHours;
     private String meridianIndicator;
+    private int AMPMswitch;
     private String displayString; // simulates the actual display
     
     /**
      * Constructor for ClockDisplay objects. This constructor 
-     * creates a new clock set at 12:00.
+     * creates a new clock set at 12:00 AM.
      */
     public ClockDisplay()
     {
         hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         meridianIndicator = "AM";
+        AMPMswitch = 1;
+        if (hours.getValue() == 0){
+            AMPMswitch++;
+        }
         updateDisplay();
         update12HourDisplay();
     }
@@ -88,6 +93,12 @@ public class ClockDisplay
         }
         else {
             updatedHours = hours.getDisplayValue();
+        }
+        if (AMPMswitch % 2 == 0){
+            meridianIndicator = "PM";
+        }
+        else {
+            meridianIndicator = "AM";
         }
         
         twelveHourDisplayString = updatedHours + ":" + minutes.getDisplayValue()
