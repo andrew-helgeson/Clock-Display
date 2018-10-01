@@ -8,12 +8,13 @@
  * fashion: the hour increments when the minutes roll over to zero.
  * 
  * @author Andrew Helgeson
- * @version 2018.09.24
+ * @version 2018.10.01
  */
 public class ClockDisplay
 {
     private NumberDisplay hours;
     private NumberDisplay minutes;
+    private String twelveHourDisplayString;
     private String displayString; // simulates the actual display
     
     /**
@@ -22,8 +23,9 @@ public class ClockDisplay
      */
     public ClockDisplay()
     {
-        hours = new NumberDisplay(13);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
+        
         updateDisplay();
     }
 
@@ -34,7 +36,7 @@ public class ClockDisplay
      */
     public ClockDisplay(int hour, int minute)
     {
-        hours = new NumberDisplay(13);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         setTime(hour, minute);
     }
@@ -63,10 +65,8 @@ public class ClockDisplay
         updateDisplay();
     }
 
-    /**
-     * Return the current time of this display in the format HH:MM.
-     */
-    public String getTime()
+    
+    public String get12HourInternalDisplay()
     {
         return displayString;
     }

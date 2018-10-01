@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ClockDisplay
-comment0.text=\r\n\ The\ ClockDisplay\ class\ implements\ a\ digital\ clock\ display\ for\ a\r\n\ 12\ hour\ clock.\ The\ clock\ shows\ hours\ and\ minutes.\ Includes\ an\ AM\ and\ PM\r\n\ indicator\r\n\ The\ clock\ display\ receives\ "ticks"\ (via\ the\ timeTick\ method)\ every\ minute\r\n\ and\ reacts\ by\ incrementing\ the\ display.\ This\ is\ done\ in\ the\ usual\ clock\r\n\ fashion\:\ the\ hour\ increments\ when\ the\ minutes\ roll\ over\ to\ zero.\r\n\ \r\n\ @author\ Andrew\ Helgeson\r\n\ @version\ 2018.09.24\r\n
+comment0.text=\r\n\ The\ ClockDisplay\ class\ implements\ a\ digital\ clock\ display\ for\ a\r\n\ 12\ hour\ clock.\ The\ clock\ shows\ hours\ and\ minutes.\ Includes\ an\ AM\ and\ PM\r\n\ indicator\r\n\ The\ clock\ display\ receives\ "ticks"\ (via\ the\ timeTick\ method)\ every\ minute\r\n\ and\ reacts\ by\ incrementing\ the\ display.\ This\ is\ done\ in\ the\ usual\ clock\r\n\ fashion\:\ the\ hour\ increments\ when\ the\ minutes\ roll\ over\ to\ zero.\r\n\ \r\n\ @author\ Andrew\ Helgeson\r\n\ @version\ 2018.10.01\r\n
 comment1.params=
 comment1.target=ClockDisplay()
 comment1.text=\r\n\ Constructor\ for\ ClockDisplay\ objects.\ This\ constructor\ \r\n\ creates\ a\ new\ clock\ set\ at\ 01\:00.\r\n
@@ -14,8 +14,7 @@ comment4.params=hour\ minute
 comment4.target=void\ setTime(int,\ int)
 comment4.text=\r\n\ Set\ the\ time\ of\ the\ display\ to\ the\ specified\ hour\ and\r\n\ minute.\r\n
 comment5.params=
-comment5.target=java.lang.String\ getTime()
-comment5.text=\r\n\ Return\ the\ current\ time\ of\ this\ display\ in\ the\ format\ HH\:MM.\r\n
+comment5.target=java.lang.String\ get12HourInternalDisplay()
 comment6.params=
 comment6.target=void\ updateDisplay()
 comment6.text=\r\n\ Update\ the\ internal\ string\ that\ represents\ the\ display.\r\n
