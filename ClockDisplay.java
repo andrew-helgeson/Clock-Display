@@ -29,10 +29,7 @@ public class ClockDisplay
         hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
         meridianIndicator = "AM";
-        AMPMswitch = 1;
-        if (hours.getValue() == 0){
-            AMPMswitch++;
-        }
+        AMPMswitch = 0;
         updateDisplay();
         update12HourDisplay();
     }
@@ -93,6 +90,9 @@ public class ClockDisplay
         }
         else {
             updatedHours = hours.getDisplayValue();
+        }
+        if (hours.getValue() == 0 && minutes.getValue() == 0){
+            AMPMswitch++;
         }
         if (AMPMswitch % 2 == 0){
             meridianIndicator = "PM";
